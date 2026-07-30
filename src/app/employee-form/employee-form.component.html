@@ -1,0 +1,56 @@
+<h2 class="text-center my-5"> {{isEditing? 'Edit': 'Create' }} Employee </h2>
+<div class="text-danger text-center" *ngIf="errorMessage != ''">
+    {{errorMessage}}
+</div>
+
+
+
+<form  (ngSubmit)="onSubmit()" #employeeForm="ngForm" class="border-rounded p-5 w-50 mb-5 mx-auto">
+    <div class="mb-3">
+    <label class="form-label">First Name: </label>
+    <input required #firstname = "ngModel" class="form-control" type="text" name="firstName" [(ngModel)] = "employee.firstName"/>
+    <div *ngIf="firstname.invalid && (firstname.touched || firstname.dirty)">
+    <div class="text-danger" *ngIf="firstname.errors?.['required']"> First Name is Required </div>    
+    </div>
+
+ 
+</div>
+    <div class="mb-3">
+    <label class="form-label">Last Name: </label>
+    <input required #lastName = "ngModel" class="form-control" type="text" name="lastName" [(ngModel)] = "employee.lastName"/>
+ <div *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
+    <div class="text-danger" *ngIf="lastName.errors?.['required']"> Last Name is Required </div>    
+    </div>    
+
+</div>
+        <div class="mb-3">
+    <label class="form-label">phone: </label>
+    <input required #phone = "ngModel" class="form-control" type="Phone" name="phone" [(ngModel)] = "employee.phone"/>
+ <div *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+    <div class="text-danger" *ngIf="phone.errors?.['required']"> Phone is Required </div>    
+    </div>    
+
+</div >
+        <div class="mb-3">
+    <label class="form-label">Email: </label>
+    <input required email #email = "ngModel" class="form-control" type="email" name="email" [(ngModel)] = "employee.email"/>
+   
+ <div *ngIf="email.invalid && (email.touched || email.dirty)">
+    <div class="text-danger" *ngIf="email.errors?.['required']"> Email is Required </div>    
+    <div class="text-danger" *ngIf="email.errors?.['email']"> Email is Invalid </div>    
+
+
+    </div>
+
+</div>
+        <div class="mb-3">
+    <label class="form-label">Position: </label>
+    <input  required #position = "ngModel" class="form-control" type="text" name="position" [(ngModel)] = "employee.position"/>
+    
+ <div *ngIf="position.invalid && (position.touched || position.dirty)">
+    <div class="text-danger" *ngIf="position.errors?.['required']"> Position is Required </div>    
+    </div>
+
+</div >
+    <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">{{isEditing? 'Edit': 'Create'}}</button>
+</form>
