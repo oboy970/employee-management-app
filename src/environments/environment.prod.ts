@@ -1,5 +1,5 @@
 export const environment = {
     isProduction: true,
-    apiUrl: ''
+    apiUrl: 'https://employee-management-api-khalidalharrasi2026-eff5addpavchcbdt.southindia-01.azurewebsites.net/api'
 
 }
